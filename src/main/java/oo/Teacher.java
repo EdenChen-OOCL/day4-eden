@@ -1,5 +1,6 @@
 package oo;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -16,11 +17,15 @@ public class Teacher extends Person {
 
     @Override
     public String introduce() {
+        String introduceString = super.introduce() + String.format(" I am a %s.", role);
+        if (klasses.isEmpty()) {
+            return introduceString;
+        }
         String classNumberString = klasses.stream()
                 .map(Klass::getNumber)
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
-        return super.introduce() + String.format(" I am a %s. I teach Class %s.", role, classNumberString);
+        return introduceString + String.format(" I teach Class %s.", classNumberString);
     }
 
     public void assignTo(Klass targetClass) {

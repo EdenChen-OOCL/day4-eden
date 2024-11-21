@@ -14,8 +14,12 @@ public class Student extends Person {
 
     @Override
     public String introduce() {
-        String classIntroduceString = kclass.isLeader(this) ? "I am the leader of class %d." : "I am in class %d.";
-        return super.introduce() + String.format(" I am a %s. " + classIntroduceString, STUDENT_ROLE, kclass.getNumber());
+        String introduceString = super.introduce() + String.format(" I am a %s.", STUDENT_ROLE);
+        if(Objects.isNull(kclass)) {
+            return introduceString;
+        }
+        String classIntroduceString = kclass.isLeader(this) ? " I am the leader of class %d." : " I am in class %d.";
+        return introduceString + String.format(classIntroduceString, kclass.getNumber());
     }
 
     public void join(Klass targetClass) {
