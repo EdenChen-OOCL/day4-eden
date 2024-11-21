@@ -4,6 +4,7 @@ package oo;
 import java.util.Objects;
 
 public class Student extends Person {
+
     public Klass kclass;
 
     public Student(int id, String name, int age) {
@@ -12,7 +13,8 @@ public class Student extends Person {
 
     @Override
     public String introduce() {
-        return super.introduce() + String.format(" I am a student. I am in class %d.", kclass.getNumber());
+        String classIntroduceString = kclass.isLeader(this) ? "I am the leader of class %d." : "I am in class %d.";
+        return super.introduce() + String.format(" I am a student. " + classIntroduceString, kclass.getNumber());
     }
 
     public void join(Klass targetClass) {
