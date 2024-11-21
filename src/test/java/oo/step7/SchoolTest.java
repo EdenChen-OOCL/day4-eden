@@ -1,16 +1,9 @@
 package oo.step7;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.BeforeEach;
-
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
-import oo.Klass;
 import oo.School;
 import oo.Student;
 import oo.Teacher;
