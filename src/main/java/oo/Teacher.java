@@ -6,10 +6,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Teacher extends Person {
+
+    public static final String TEACHER_ROLE = "teacher";
     private final Set<Klass> klasses = new HashSet<>();
 
     public Teacher(int id, String name, int age) {
-        super(id, name, age);
+        super(id, name, age, TEACHER_ROLE);
     }
 
     @Override
@@ -18,7 +20,7 @@ public class Teacher extends Person {
                 .map(Klass::getNumber)
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
-        return super.introduce() + String.format(" I am a teacher. I teach Class %s.", classNumberString);
+        return super.introduce() + String.format(" I am a %s. I teach Class %s.", role, classNumberString);
     }
 
     public void assignTo(Klass targetClass) {

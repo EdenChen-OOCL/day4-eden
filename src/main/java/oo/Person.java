@@ -8,11 +8,17 @@ public class Person {
     protected int id;
     protected String name;
     protected int age;
+    protected String role = "";
 
     public Person(int id, String name, int age) {
+        this(id, name, age, "");
+    }
+
+    public Person(int id, String name, int age, String role) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.role = role;
     }
 
     public String introduce() {
