@@ -3,8 +3,6 @@ package oo;
 import java.util.Objects;
 
 public class Person {
-
-
     protected int id;
     protected String name;
     protected int age;
@@ -25,19 +23,24 @@ public class Person {
         return String.format("My name is %s. I am %d years old.", name, age);
     }
 
+    public String getConfirmAfterAssginLeader(int classNumber, String leaderName) {
+        return String.format("I am %s, %s of Class %d. I know %s become Leader.", name, role, classNumber, leaderName);
+    }
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if(obj instanceof Person anotherPerson) {
-            return this.id == anotherPerson.id;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
         }
-        return false;
+        Person person = (Person) o;
+        return id == person.id && Objects.equals(role, person.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id, role);
     }
 }
